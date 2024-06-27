@@ -16,7 +16,8 @@ const AddTask = () => {
       const res = await axios.post("/api/AddTask", { title: todo });
       const myTodo = res.data;
       console.log("myTodo  Returned", myTodo);
-      dispatch(addTodo(todo));
+      dispatch(addTodo(myTodo));
+      
     } catch (error) {
       console.log("Something went wrong", error);
     }

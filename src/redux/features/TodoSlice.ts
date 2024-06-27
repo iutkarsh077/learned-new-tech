@@ -32,9 +32,10 @@ const todoSlice = createSlice({
 
     reducers: {
         addTodo: (state, action) => {
+            console.log(action.payload);
             const todo = {
-                id: nanoid(),
-                title: action.payload,
+                id: action.payload.data.id,
+                title: action.payload.data.title,
             }
             state.todos.push(todo);
         },

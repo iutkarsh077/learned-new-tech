@@ -9,14 +9,17 @@ import { useRouter } from "next/navigation";
 function Todos() {
   const state = useAppSelector((state) => state);
   console.log(state.todos);
+
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  useEffect(() => {
+  useEffect(()=> {
     dispatch(getTodos());
-  }, []);
+  }, [])
 
-  if (state.loading) return <Loader />;
+  if (state.loading) return (
+    <Loader />
+  );
 
   const handleDeleteTask = async (id: String) => {
     try {

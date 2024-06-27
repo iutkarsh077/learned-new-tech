@@ -4,7 +4,7 @@ import dbConnect from "@/helpers/Db";
 
 export async function POST(req: Request) {
     const { title } = await req.json();
-
+    
     try {
         await dbConnect();
 
