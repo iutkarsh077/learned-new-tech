@@ -4,11 +4,13 @@ import { getTodos, removeTodo } from "@/redux/features/TodoSlice";
 import React, { useEffect } from "react";
 import Loader from "./Loader";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function Todos() {
   const state = useAppSelector((state) => state);
   console.log(state.todos);
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(getTodos());
@@ -22,7 +24,8 @@ function Todos() {
         data: { id },
       });
       console.log(res);
-      dispatch(removeTodo(id))
+      dispatch(removeTodo(id));
+      router.refresh();
     } catch (error) {
       console.log(" Something went Wrong ", error);
     }
